@@ -1,0 +1,11 @@
+public class Main {
+    public static void main(String[] args) {
+        // College name and department
+        String collegeName = "Saveetha School of Engineering";
+        String department = "Computer Science and Engineering (CSE)";
+
+        // Print college name and department
+        System.out.println("College Name: " + collegeName);
+        System.out.println("Department: " + department);
+    }
+}
