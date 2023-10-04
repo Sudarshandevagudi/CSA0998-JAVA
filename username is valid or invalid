@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // Create Scanner object to read input
+        Scanner scanner = new Scanner(System.in);
+        
+        // Ask the user to enter the username
+        System.out.print("Enter the user name: ");
+        String userName1 = scanner.nextLine();
+        
+        // Ask the user to re-enter the username
+        System.out.print("Reenter the user name: ");
+        String userName2 = scanner.nextLine();
+        
+        // Check if the entered usernames match
+        if (userName1.equals(userName2)) {
+            System.out.println("User name is valid.");
+        } else {
+            System.out.println("User name is Invalid.");
+        }
+        
+        // Close the Scanner to prevent resource leak
+        scanner.close();
+    }
+}
