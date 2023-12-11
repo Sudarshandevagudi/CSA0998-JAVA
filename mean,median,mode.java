@@ -1,46 +1,60 @@
+import java.util.Arrays;
 import java.util.Scanner;
-class arr
-{
-public static void main(String[] args)
-{
-Scanner s=new Scanner(System.in);
-System.out.print("Enter the array size: ");
-int size=s.nextInt();
-float[] arr=new float[size];
-float msum=0;
-System.out.print("Enter the array elements: ");
-for(int i=0;i<size;i++){
-arr[i]=s.nextFloat();
-msum+=arr[i];
-}
-float temp=0;
-for(int i=0;i<size;i++){
-for(int j=0;j<size;j++){
-if(arr[i]<arr[j]){
-temp=arr[i];
-arr[i]=arr[j];
-arr[j]=temp;
-}
-}
-}
-System.out.println("Mean: "+(int)(msum/size));
-if(size%2==0)
-System.out.println("Median: "+(int)((arr[size/2]+arr[(size/2)+1])/2));
-else
-System.out.println("Median: "+(int)(arr[size/2]));
-float max=0;
-int o_count=0,n_count=0;
-for(int i=0;i<size;i++){
-for(int j=0;j<size;j++){
-if(arr[i]==arr[j])
-n_count++;
-}
-if(o_count<n_count){
-max=arr[i];
-o_count=n_count;
-}
-n_count=0;
-}
-System.out.print("Mode: "+(int)max);
-}
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Take size of array input
+        System.out.print("Enter size of array: ");
+        int size = sc.nextInt();
+        
+        // Take array elements input
+        int[] elements = new int[size]; 
+        System.out.println("Enter array elements:");
+        for(int i=0; i<size; i++) {
+            elements[i] = sc.nextInt(); 
+        }
+        
+        // Sort the array
+        Arrays.sort(elements);
+        
+        // Mean 
+        int sum = 0;
+        for(int element : elements) {
+            sum += element;
+        }
+        double mean = (double)sum / elements.length;
+
+        // Median
+        int median;
+        if(elements.length % 2 == 0) {
+            median = (elements[elements.length/2] + elements[elements.length/2 - 1]) / 2; 
+        } else {
+            median = elements[elements.length/2]; 
+        }
+        
+        // Mode 
+        int mode = elements[0];
+        int maxCount = 1;
+        int currCount = 1;
+        for(int i=1; i< elements.length; i++) {
+            if(elements[i] == elements[i-1]) {
+                currCount++;
+            }else {
+                if(currCount > maxCount) {
+                    maxCount = currCount;
+                    mode = elements[i-1];
+                }
+                currCount = 1; 
+            }
+        }
+        
+        // Print output
+        System.out.println("Mean = " + mean);
+        System.out.println("Median = " + median);
+        System.out.println("Mode = " + mode); 
+        
+        sc.close();
+    }
 }
